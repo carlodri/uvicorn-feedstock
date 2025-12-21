@@ -3,7 +3,7 @@ About uvicorn-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/uvicorn-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/encode/uvicorn
+Home: https://pypi.org/project/uvicorn
 
 Package license: BSD-3-Clause
 
@@ -11,12 +11,11 @@ Summary: The lightning-fast ASGI server.
 
 Development: https://github.com/encode/uvicorn
 
-Documentation: https://www.uvicorn.org/
+Documentation: https://uvicorn.dev/
 
 Uvicorn is a lightning-fast ASGI server implementation,
 using [uvloop](https://github.com/MagicStack/uvloop) and
 [httptools](https://github.com/MagicStack/httptools).
-
 
 Current build status
 ====================
