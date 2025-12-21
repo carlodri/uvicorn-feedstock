@@ -4,8 +4,6 @@ schema_version: 1
 context:
   version: "0.40.0"
   python_check_max: "3.14"
-  win_colorama: ${{ "colorama >=0.4" if noarch_platform == "win" else "python" }}
-  unix_uvloop: ${{ "uvloop >=0.14.0,!=0.15.0,!=0.15.1" if noarch_platform == "unix" else "python" }}
 
 recipe:
   name: uvicorn
@@ -31,7 +29,6 @@ outputs:
           - uvicorn = uvicorn.main:main
     requirements:
       host:
-        - __${{ noarch_platform }}
         - hatchling
         - pip
         - python ${{ python_min }}.*
@@ -63,13 +60,16 @@ outputs:
       run:
         - __${{ noarch_platform }}
         - ${{ pin_subpackage("uvicorn", exact=True) }}
-        - ${{ win_colorama }}
-        - ${{ unix_uvloop }}
         - websockets >=10.4
         - httptools >=0.6.3
         - watchfiles >=0.13
         - python-dotenv >=0.13
         - pyyaml >=5.1
+        - if: noarch_plaform == "win"
+          then:
+            - colorama >=0.4
+          else:
+            - uvloop >=0.14.0,!=0.15.0,!=0.15.1
     tests:
       - python:
           imports: uvicorn.supervisors.watchfilesreload
